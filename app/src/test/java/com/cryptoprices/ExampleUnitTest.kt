@@ -1,4 +1,4 @@
-package com.bitcoinprice
+package com.cryptoprices
 
 import org.junit.Test
 

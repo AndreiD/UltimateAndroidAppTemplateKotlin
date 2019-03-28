@@ -1,6 +1,6 @@
-package com.bitcoinprice.data
+package com.cryptoprices.data
 
-import com.bitcoinprice.model.Listings
+import com.cryptoprices.model.Listings
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

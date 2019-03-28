@@ -1,20 +1,18 @@
-package com.bitcoinprice
+package com.cryptoprices
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
-import com.bitcoinprice.adapters.PricesAdapter
-import com.bitcoinprice.data.TheApiService
-import com.bitcoinprice.model.Listings
+import com.cryptoprices.adapters.PricesAdapter
+import com.cryptoprices.data.TheApiService
+import com.cryptoprices.model.Listings
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_prices.*
 
 class PricesActivity : AppCompatActivity() {
 
-    private lateinit var mRecyclerView: RecyclerView
     private val mAdapter: PricesAdapter = PricesAdapter()
     private var disposable: Disposable? = null
     private val theApiService by lazy {
@@ -25,11 +23,9 @@ class PricesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prices)
 
-        mRecyclerView = findViewById(R.id.recycler_prices)
-
-        mRecyclerView.setHasFixedSize(true)
-        mRecyclerView.layoutManager = LinearLayoutManager(this)
-        mRecyclerView.adapter = mAdapter
+        recycler_prices.setHasFixedSize(true)
+        recycler_prices.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+        recycler_prices.adapter = mAdapter
 
         getListings()
     }

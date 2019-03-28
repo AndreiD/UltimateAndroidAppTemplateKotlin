@@ -21,59 +21,46 @@ Step 3: Profit
 
 ~~~~
 apply plugin: 'com.android.application'
-apply plugin: 'io.objectbox'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
 
 android {
-  compileSdkVersion 26
-  buildToolsVersion "26.0.1"
-
-  defaultConfig {
-    applicationId "com.andrei.template"
-    minSdkVersion 23
-    targetSdkVersion 26
-    versionCode 1
-    versionName "1.0"
-    vectorDrawables.useSupportLibrary = true
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-  }
-
-  buildTypes {
-    release {
-      minifyEnabled false
-      shrinkResources false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.bitcoinprice"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    debug {
-      minifyEnabled false
-      versionNameSuffix ".debug"
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
-  }
+}
 
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
 
-  packagingOptions {
-    exclude 'META-INF/DEPENDENCIES'
-    exclude 'LICENSE.txt'
-    exclude 'META-INF/LICENSE'
-    exclude 'META-INF/LICENSE.txt'
-    exclude 'META-INF/NOTICE'
-    exclude 'LICENSE.txt'
-  }
+    implementation "com.squareup.retrofit2:retrofit:2.4.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.3.0"
 
-  lintOptions {
-    warning 'InvalidPackage'
-    abortOnError false
-  }
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
 
-  //needed if for espresso
-  configurations.all {
-    resolutionStrategy {
-      force 'com.android.support:support-annotations:23.0.1'
-    }
-  }
 }
 ~~~~
 
